@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'User Creation' do
+    user = User.new(
+      email: 'jones@foo.com', 
+      password: Devise::Encryptor.digest(User, 'p@55w0rd')
+    )
+
+    assert user.valid?, 'user is not valid'
+    puts 'user is valid'
+  end
 end
