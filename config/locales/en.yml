@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  api:
+    v1:
+      sign_in:
+        incorrect: 'Your username or password is wrong.'
+        success: 'Sign in successful.'
+      sign_up:
+        success: 'Signed up successfully.'
+        wrong: 'Something went wrong.'
+        missing_params: 'Missing Params'

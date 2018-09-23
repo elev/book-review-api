@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'pry'
+
 class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   test 'should register user' do
     post api_v1_sign_up_path(

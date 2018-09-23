@@ -6,9 +6,9 @@ class Api::V1::SessionsController < Devise::SessionsController
   def create
     if @user.valid_password?(sign_in_params[:password])
       sign_in 'user', @user
-      json_response 'Sign in successful', true, {user: @user}, :ok
+      json_response I18n.t('api.v1.sign_in.success'), true, {user: @user}, :ok
     else
-      json_response 'Unauthorized', false, {}, :unauthorized
+      json_response I18n.t('api.v1.sign_in.incorrect'), false, {}, :unauthorized
     end
   end
 
@@ -24,7 +24,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     if @user
       return @User
     else
-      json_response 'Cannot find user', false, {}, :failure
+      json_response I18n.t('api.v1.sign_in.incorrect'), false, {}, :unauthorized
     end
   end
 end

@@ -6,8 +6,6 @@ class UserTest < ActiveSupport::TestCase
       email: 'jones@foo.com', 
       password: Devise::Encryptor.digest(User, 'p@55w0rd')
     )
-
-    assert user.valid?, 'user is not valid'
-    puts 'user is valid'
+    assert user.valid?
   end
 end
