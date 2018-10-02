@@ -12,3 +12,10 @@ two:
   email: malorie@mal.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd5') %>
   created_at: <%= Time.zone.now %>
+logged_in_user:
+  email: kenny_logins@login.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'foobarbaz') %>
+  created_at: <%= Time.zone.now %>
+  authentication_token: '123-456'
+  
+

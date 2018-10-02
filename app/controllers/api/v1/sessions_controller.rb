@@ -38,11 +38,10 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def valid_token
     @user = User.find_by authentication_token: request.headers['AUTH-TOKEN']
-
     if @user
       return @user
     else
-      json_response 'Invalid Token', false, {}, :failure
+      json_response 'Invalid Token', false, {}, :network_authentication_required
     end
   end
 end
