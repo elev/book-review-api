@@ -6,11 +6,13 @@ class Api::V1::ReviewsController < ApplicationController
 
   def index
     @reviews = @book.reviews
-    json_response 'Index success', true, { reviews: @reviews }, :ok
+    reviews_serializer = parse_json @reviews
+    json_response 'Index success', true, { reviews: reviews_serializer }, :ok
   end
   
   def show
-    json_response 'Success', true, {review: @review }, :ok
+    review_serializer = parse_json @review
+    json_response 'Success', true, {review: review_serializer }, :ok
   end
 
   def create
@@ -19,7 +21,8 @@ class Api::V1::ReviewsController < ApplicationController
     review.book_id = params[:book_id]
 
     if review.save
-      json_response 'Created review successfuly', true, {review: review}, :ok
+      review_serializer = parse_json review
+      json_response 'Created review successfuly', true, {review: review_serializer}, :ok
     else
       json_response 'Creating a review failed', false, {}, :unprocessable_entity
     end
@@ -27,7 +30,9 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      json_response 'Updating review success', true, {review: @review}, :ok
+      review_serializer = parse_json @review
+
+      json_response 'Updating review success', true, {review: review_serializer}, :ok
     else
       json_response 'Updating review failed', false, {}, :unprocessable_entity
     end
